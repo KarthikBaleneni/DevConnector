@@ -1,6 +1,12 @@
 const express = require('express');
+const connectDB = require('./config/db');
 
+//Initialise Express
 const app = express();
+
+//Connect MongoDB
+
+connectDB();
 
 app.get('/', (req, res) => res.send('API Running'));
 
