@@ -6,7 +6,7 @@ const app = express();
 
 //Connect MongoDB
 
-//connectDB();
+connectDB();
 
 app.get('/', (req, res) => res.send('API Running'));
 
