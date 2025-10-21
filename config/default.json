@@ -1,4 +1,3 @@
 {
-    "mongoURI": "mongodb+srv://karthikbaleneni0916_db_user:Ydjhcv6663twBOHW@devconnectorcluster.cwwnog.mongodb.net/?retryWrites=true&w=majority&appName=DevConnectorCluster",
-    "mongoConnectionURI": "mongodb+srv://karthikbaleneni0916_db_user:Ydjhcv6663twBOHW@devconnectorcluster.cwwnog.mongodb.net/?retryWrites=true&w=majority&appName=DevConnectorCluster"
+    "mongoConnectionURI": "mongodb+srv://karthikbaleneni0916_db_user:************@devconnectorcluster.cwwnog.mongodb.net/?retryWrites=true&w=majority&appName=DevConnectorCluster"
 }
