@@ -3,10 +3,12 @@ const express = require('express');
 // import User from '../../models/api/User';
 const {check, query, validationResult} = require('express-validator');
 const router = express.Router();
+const config = require('config');
 //import gravatar from 'gravatar';
 const gravatar = require('gravatar');
 //import bcrypt from 'bcryptjs';
 const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
 const User = require('../../models/User');
 //import {User} from '../../models/User';
 
@@ -53,7 +55,17 @@ router.post('/', [
 
        //Saving user
        await user.save();
-       res.send('User Registered');
+
+       const payload = {
+        user: {
+            id: user.id
+        }
+       }
+       jwt.sign(payload, config.get('jwtSecret') , {expiresIn : 360000}, (err, token) => {
+        if(err) throw err;
+        res.json({token});
+       });
+      // res.send('User Registered');
     } catch (error) {
         console.log(error.message);
         res.status(500).send('Server Error');
