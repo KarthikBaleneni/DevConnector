@@ -1,10 +1,13 @@
-import express from 'express';
-import { check, query, validationResult } from 'express-validator';
+const express = require('express');
+//import { check, query, validationResult } from 'express-validator';
 // import User from '../../models/api/User';
+const {check, query, validationResult} = require('express-validator');
 const router = express.Router();
-import gravatar from 'gravatar';
-//const gravatar = require('gravatar');
-import bcrypt from 'bcryptjs';
+//import gravatar from 'gravatar';
+const gravatar = require('gravatar');
+//import bcrypt from 'bcryptjs';
+const bcrypt = require('bcryptjs');
+const User = require('../../models/User');
 //import {User} from '../../models/User';
 
 //@route  POST api/users
@@ -27,7 +30,7 @@ router.post('/', [
         // Check User exists or not
        let user = await User.findOne({email}) ;
        if(user){
-        res.status(400).json({errors : [{msg: 'User Already Exists'}]})
+        return res.status(400).json({errors : [{msg: 'User Already Exists'}]})
        }
        // Pull user Gravator
        const avatar = gravatar.url(email, {
@@ -45,7 +48,7 @@ router.post('/', [
 
        // Encrypt password 
 
-       const salt = await bcrypt.salt(20);
+       const salt = await bcrypt.genSalt(20);
        user.password = await bcrypt.hash(password, salt);
 
        //Saving user
