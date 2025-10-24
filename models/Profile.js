@@ -33,7 +33,7 @@ const ProfileSchema = new mongoose.Schema(
             {
                 title: {
                     type: String,
-                    required: trues
+                    required: true
                 },
                 company: {
                     type: String,

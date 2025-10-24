@@ -4,7 +4,7 @@ const auth = require('../../middleware/auth')
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const post = require('../../models/Post')
-const {validationResult} = require("express-validator");
+const {check,validationResult} = require("express-validator");
 
 //@route  POST api/posts
 //desc    Create a Post
